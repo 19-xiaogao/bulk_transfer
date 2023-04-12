@@ -7,12 +7,11 @@
 const hre = require("hardhat");
 
 async function main() {
-  
-  const BulkTransfer = await hre.ethers.getContractFactory("BulkTransfer");
-  const contractBulk = await BulkTransfer.deploy()
+  const deployAmount = hre.ethers.utils.parseEther("0.001");
+  const BulkTransfer = await hre.ethers.getContractFactory("BatchTransfer");
+  const contractBulk = await BulkTransfer.deploy("0xFBA9E29E18a5eBf31597eEF4496acdB6F8F25EAf", 1000, 1000, 2)
 
   await contractBulk.deployed();
-
   console.log(contractBulk);
 }
 
